@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:#f4f1ea;color:#141210;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:#ff2e88}
+  ::selection{background:#ff2e88;color:#fff}
+</style>
+</helmet>
+<div style="max-width:1400px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;padding:26px 0;position:sticky;top:0;z-index:50;background:rgba(244,241,234,0.82);backdrop-filter:blur(10px)">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.02em">
+      <span style="width:14px;height:14px;background:#ff2e88;border-radius:50%;display:inline-block"></span>ArtWeb
+    </a>
+    <nav style="display:flex;gap:30px;align-items:center;font-size:15px;font-weight:500">
+      <a href="index.html#usluge">Usluge</a>
+      <a href="radovi.html">Radovi</a>
+      <a href="index.html#onama">O nama</a>
+      <a href="index.html#cijene">Cijene</a>
+      <a href="blog.html" style="color:#ff2e88">Blog</a>
+      <a href="index.html#kontakt" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Započni projekt</a>
+    </nav>
+  </header>
+
+  <section style="padding:clamp(48px,8vw,110px) 0 clamp(32px,5vw,56px)">
+    <a href="index.html" style="font-size:15px;color:#8a8375;font-weight:500">← Naslovna</a>
+    <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600;display:block;margin-top:28px">BLOG</span>
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(46px,8vw,104px);line-height:0.94;letter-spacing:-0.03em;margin-top:14px;max-width:14ch">Iz našeg studija</h1>
+    <p style="font-size:clamp(18px,2.2vw,22px);line-height:1.5;max-width:52ch;color:#3a352f;margin-top:26px">Savjeti o web dizajnu, SEO-u, marketingu i brendiranju — bez marketinškog blabla.</p>
+  </section>
+
+  <section style="padding-bottom:clamp(40px,6vw,64px)">
+    <a href="blog.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(24px,4vw,48px);align-items:center;background:#fff;border:1px solid rgba(20,18,16,0.1);border-radius:26px;overflow:hidden" style-hover="{{ featHover }}">
+      <div style="aspect-ratio:4/3;background:#e9e4d9 url('assets/blog-redizajn.png') center/cover no-repeat;min-height:100%"></div>
+      <div style="padding:clamp(24px,4vw,44px)">
+        <span style="font-family:ui-monospace,monospace;font-size:13px;color:#ff2e88;font-weight:600">IZDVOJENO · DIZAJN</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,3.4vw,42px);line-height:1.05;letter-spacing:-0.02em;margin:14px 0 12px">5 znakova da vam web treba redizajn</h2>
+        <p style="color:#3a352f;font-size:17px;line-height:1.55;max-width:50ch">Ako vaš sajt izgleda kao 2015., sporo se učitava ili ne donosi upite — vrijeme je za promjenu. Prolazimo kroz konkretne signale.</p>
+        <p style="color:#8a8375;font-size:14px;margin-top:18px">Rujan 2026 · 6 min čitanja</p>
+      </div>
+    </a>
+  </section>
+
+  <section style="padding-bottom:clamp(40px,6vw,72px)">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:26px">
+      <sc-for list="{{ visiblePosts }}" as="b" hint-placeholder-count="6">
+        <a href="blog.html" style="display:block" style-hover="{{ postHover }}">
+          <div style="{{ b.cover }}"></div>
+          <span style="font-family:ui-monospace,monospace;font-size:13px;color:#ff2e88;font-weight:600">{{ b.cat }}</span>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;line-height:1.2;letter-spacing:-0.01em;margin:8px 0 8px">{{ b.title }}</h3>
+          <p style="color:#3a352f;font-size:15px;line-height:1.5">{{ b.excerpt }}</p>
+          <p style="color:#8a8375;font-size:14px;margin-top:12px">{{ b.date }} · {{ b.read }}</p>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(30px,5vw,60px) 0 clamp(60px,8vw,110px)">
+    <div style="background:#141210;color:#f4f1ea;border-radius:32px;padding:clamp(36px,6vw,64px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,3.6vw,42px);line-height:1;letter-spacing:-0.02em">Novi članci u inbox</h2>
+        <p style="color:#c9c4ba;font-size:16px;margin-top:12px;max-width:40ch">Jednom mjesečno, bez spama. Samo korisni savjeti.</p>
+      </div>
+      <form onSubmit="{{ onSubmit }}" style="display:flex;gap:12px;flex-wrap:wrap;flex:1;min-width:280px;max-width:460px">
+        <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#ff2e88;color:#fff;border-radius:100px;padding:15px 24px;font-weight:600;width:100%;text-align:center">Prijavljeni ste — hvala!</div>
+        </sc-if>
+        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;width:100%">
+            <input required type="email" placeholder="tvoj@email.hr" style="flex:1;min-width:180px;background:rgba(244,241,234,0.06);border:1px solid rgba(244,241,234,0.2);color:#f4f1ea;padding:15px 18px;border-radius:100px;font-size:16px;font-family:inherit;outline:none"/>
+            <button type="submit" style="background:#ff2e88;color:#fff;border:none;padding:15px 26px;border-radius:100px;font-weight:600;font-size:16px;cursor:pointer;font-family:inherit" style-hover="{{ pinkHover }}">Prijavi se</button>
+          </div>
+        </sc-if>
+      </form>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(20,18,16,0.14);padding:40px 0 56px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;letter-spacing:-0.02em">
+      <span style="width:12px;height:12px;background:#ff2e88;border-radius:50%;display:inline-block"></span>ArtWeb
+    </a>
+    <nav style="display:flex;gap:24px;font-size:15px;flex-wrap:wrap">
+      <a href="index.html#usluge">Usluge</a><a href="radovi.html">Radovi</a><a href="index.html#onama">O nama</a><a href="index.html#cijene">Cijene</a><a href="blog.html">Blog</a>
+    </nav>
+    <span style="color:#8a8375;font-size:14px">© 2026 ArtWeb studio</span>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: 'Sve', subscribed: false };
+  renderVals() {
+    const ctaHover = { background: '#ff2e88' };
+    const featHover = { transform: 'translateY(-4px)', boxShadow: '0 20px 40px rgba(20,18,16,0.1)' };
+    const postHover = { opacity: 0.82 };
+    const pinkHover = { background: '#e01f78' };
+
+    const cats = ['Sve', 'Dizajn', 'SEO', 'Marketing'];
+    const postsAll = [
+      { cat: 'DIZAJN', title: 'Anatomija landing stranice koja konvertira', excerpt: 'Koji elementi moraju biti iznad pregiba i zašto.', date: 'Rujan 2026', read: '5 min', img: 'assets/blog-anatomija.png' },
+      { cat: 'SEO', title: 'Kako se pozicionirati lokalno u 2026.', excerpt: 'Google Business, recenzije i lokalne ključne riječi.', date: 'Kolovoz 2026', read: '7 min', img: 'assets/blog-lokalno.png' },
+    ];
+    const active = this.state.active;
+    const map = { Dizajn: 'DIZAJN', SEO: 'SEO', Marketing: 'MARKETING' };
+    const withCover = (p) => ({ ...p, cover: 'aspect-ratio:16/10;border-radius:18px;margin-bottom:16px;overflow:hidden;background:' + (p.img
+      ? `#e9e4d9 url('${p.img}') center/cover no-repeat`
+      : 'repeating-linear-gradient(135deg,#e9e4d9,#e9e4d9 14px,#efeae0 14px,#efeae0 28px)') });
+    const visiblePosts = (active === 'Sve' ? postsAll : postsAll.filter(p => p.cat === map[active])).map(withCover);
+    const filters = cats.map(c => ({
+      label: c,
+      onClick: () => this.setState({ active: c }),
+      style: `padding:10px 18px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;border:1px solid ${active === c ? '#141210' : 'rgba(20,18,16,0.2)'};background:${active === c ? '#141210' : 'transparent'};color:${active === c ? '#f4f1ea' : '#141210'}`,
+    }));
+
+    return {
+      ctaHover, featHover, postHover, pinkHover, filters, visiblePosts,
+      subscribed: this.state.subscribed, notSubscribed: !this.state.subscribed,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>
