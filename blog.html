@@ -26,14 +26,17 @@
     <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.02em">
       <span style="width:14px;height:14px;background:#ff2e88;border-radius:50%;display:inline-block"></span>ArtWeb
     </a>
-    <nav style="display:flex;gap:30px;align-items:center;font-size:15px;font-weight:500">
-      <a href="index.html#usluge">Usluge</a>
-      <a href="radovi.html">Radovi</a>
-      <a href="index.html#onama">O nama</a>
-      <a href="index.html#cijene">Cijene</a>
-      <a href="blog.html" style="color:#ff2e88">Blog</a>
-      <a href="index.html#kontakt" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Započni projekt</a>
+    <nav style="{{ navStyle }}">
+      <a href="index.html#usluge" onClick="{{ closeMenu }}">Usluge</a>
+      <a href="radovi.html" onClick="{{ closeMenu }}">Radovi</a>
+      <a href="index.html#onama" onClick="{{ closeMenu }}">O nama</a>
+      <a href="index.html#cijene" onClick="{{ closeMenu }}">Cijene</a>
+      <a href="blog.html" onClick="{{ closeMenu }}" style="color:#ff2e88">Blog</a>
+      <a href="index.html#kontakt" onClick="{{ closeMenu }}" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Započni projekt</a>
     </nav>
+    <button aria-label="Izbornik" onClick="{{ toggleMenu }}" style="{{ burgerStyle }}">
+      <span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span>
+    </button>
   </header>
 
   <section style="padding:clamp(48px,8vw,110px) 0 clamp(32px,5vw,56px)">
@@ -108,8 +111,25 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { active: 'Sve', subscribed: false };
+  state = { active: 'Sve', subscribed: false, isMobile: false, menuOpen: false };
+  componentDidMount() {
+    this._onResize = () => {
+      const m = window.innerWidth <= 820;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, menuOpen: false });
+    };
+    this._onResize();
+    window.addEventListener('resize', this._onResize);
+  }
+  componentWillUnmount() { if (this._onResize) window.removeEventListener('resize', this._onResize); }
   renderVals() {
+    const { isMobile, menuOpen } = this.state;
+    const navStyle = isMobile
+      ? `display:${menuOpen ? 'flex' : 'none'};flex-direction:column;gap:6px;align-items:stretch;position:absolute;top:100%;left:0;right:0;background:#f4f1ea;border-top:1px solid rgba(20,18,16,0.12);padding:16px clamp(20px,5vw,64px) 24px;font-size:18px;font-weight:500;box-shadow:0 24px 40px rgba(20,18,16,0.1)`
+      : 'display:flex;gap:30px;align-items:center;font-size:15px;font-weight:500';
+    const burgerStyle = `display:${isMobile ? 'flex' : 'none'};flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:10px`;
+    const burgerBar = 'display:block;height:2px;width:100%;background:#141210;border-radius:2px';
+    const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+    const closeMenu = () => this.setState({ menuOpen: false });
     const ctaHover = { background: '#ff2e88' };
     const featHover = { transform: 'translateY(-4px)', boxShadow: '0 20px 40px rgba(20,18,16,0.1)' };
     const postHover = { opacity: 0.82 };
@@ -133,6 +153,7 @@ class Component extends DCLogic {
     }));
 
     return {
+      navStyle, burgerStyle, burgerBar, toggleMenu, closeMenu,
       ctaHover, featHover, postHover, pinkHover, filters, visiblePosts,
       subscribed: this.state.subscribed, notSubscribed: !this.state.subscribed,
       onSubmit: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },

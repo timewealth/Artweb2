@@ -29,14 +29,17 @@
       <span style="width:14px;height:14px;background:#ff2e88;border-radius:50%;display:inline-block"></span>
       ArtWeb
     </a>
-    <nav style="display:flex;gap:30px;align-items:center;font-size:15px;font-weight:500">
-      <a href="#usluge">Usluge</a>
-      <a href="radovi.html">Radovi</a>
-      <a href="#onama">O nama</a>
-      <a href="#cijene">Cijene</a>
-      <a href="blog.html">Blog</a>
-      <a href="#kontakt" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Započni projekt</a>
+    <nav style="{{ navStyle }}">
+      <a href="#usluge" onClick="{{ closeMenu }}">Usluge</a>
+      <a href="radovi.html" onClick="{{ closeMenu }}">Radovi</a>
+      <a href="#onama" onClick="{{ closeMenu }}">O nama</a>
+      <a href="#cijene" onClick="{{ closeMenu }}">Cijene</a>
+      <a href="blog.html" onClick="{{ closeMenu }}">Blog</a>
+      <a href="#kontakt" onClick="{{ closeMenu }}" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Započni projekt</a>
     </nav>
+    <button aria-label="Izbornik" onClick="{{ toggleMenu }}" style="{{ burgerStyle }}">
+      <span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span>
+    </button>
   </header>
 
   <section id="top" style="padding:clamp(48px,9vw,120px) 0 clamp(60px,8vw,110px)">
@@ -261,9 +264,15 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { active: 'Sve', sent: false };
+  state = { active: 'Sve', sent: false, isMobile: false, menuOpen: false };
 
   componentDidMount() {
+    this._onResize = () => {
+      const m = window.innerWidth <= 820;
+      if (m !== this.state.isMobile) this.setState({ isMobile: m, menuOpen: false });
+    };
+    this._onResize();
+    window.addEventListener('resize', this._onResize);
     const els = this.host ? null : null;
     const nodes = document.querySelectorAll('[data-reveal]');
     nodes.forEach(n => {
@@ -283,9 +292,17 @@ class Component extends DCLogic {
     nodes.forEach(n => io.observe(n));
     this._io = io;
   }
-  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); if (this._onResize) window.removeEventListener('resize', this._onResize); }
 
   renderVals() {
+    const { isMobile, menuOpen } = this.state;
+    const navStyle = isMobile
+      ? `display:${menuOpen ? 'flex' : 'none'};flex-direction:column;gap:6px;align-items:stretch;position:absolute;top:100%;left:0;right:0;background:#f4f1ea;border-top:1px solid rgba(20,18,16,0.12);padding:16px clamp(20px,5vw,64px) 24px;font-size:18px;font-weight:500;box-shadow:0 24px 40px rgba(20,18,16,0.1)`
+      : 'display:flex;gap:30px;align-items:center;font-size:15px;font-weight:500';
+    const burgerStyle = `display:${isMobile ? 'flex' : 'none'};flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:10px`;
+    const burgerBar = `display:block;height:2px;width:100%;background:#141210;border-radius:2px;transition:transform .25s,opacity .25s;transform-origin:center;${menuOpen ? '' : ''}`;
+    const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+    const closeMenu = () => this.setState({ menuOpen: false });
     const pinkHover = { background: '#e01f78', transform: 'translateY(-2px)' };
     const outlineHover = { borderColor: '#141210', transform: 'translateY(-2px)' };
     const ctaHover = { background: '#ff2e88' };
@@ -361,6 +378,7 @@ class Component extends DCLogic {
     const inputStyle = 'background:rgba(244,241,234,0.06);border:1px solid rgba(244,241,234,0.2);color:#f4f1ea;padding:15px 18px;border-radius:12px;font-size:16px;font-family:inherit;outline:none';
 
     return {
+      navStyle, burgerStyle, burgerBar, toggleMenu, closeMenu,
       services, filters, visibleWork, stats, team, plans, testimonials, posts,
       inputStyle, pinkHover, outlineHover, ctaHover, rowHover, cardHover, postHover, pinkText,
       sent: this.state.sent, notSent: !this.state.sent,
