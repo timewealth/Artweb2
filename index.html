@@ -3,9 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArtWeb | Izrada web stranica, webshopova i SEO</title>
+<meta name="description" content="Izrađujemo moderne web stranice, webshopove i digitalna rješenja prilagođena vašem poslovanju. Dizajn, razvoj, SEO i podrška na jednom mjestu.">
+<link rel="canonical" href="https://timewealth.github.io/Artweb2/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ArtWeb | Izrada web stranica, webshopova i SEO">
+<meta property="og:description" content="Izrađujemo moderne web stranice, webshopove i digitalna rješenja prilagođena vašem poslovanju. Dizajn, razvoj, SEO i podrška na jednom mjestu.">
+<meta property="og:url" content="https://timewealth.github.io/Artweb2/">
+<meta property="og:image" content="assets/hero-studio.jpg">
+<meta property="og:locale" content="hr_HR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ArtWeb | Izrada web stranica, webshopova i SEO">
+<meta name="twitter:description" content="Izrađujemo moderne web stranice, webshopove i digitalna rješenja prilagođena vašem poslovanju.">
 <script src="./support.js"></script>
 </head>
 <body>
+<template id="__bundler_thumbnail" data-bg-color="#1a1712">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1a1712"/>
+    <text x="600" y="440" font-family="Georgia, serif" font-size="200" font-weight="700" fill="#f4f1ea" text-anchor="middle">ArtWeb</text>
+  </svg>
+</template>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,13 +49,13 @@
     </a>
     <nav style="{{ navStyle }}">
       <a href="#usluge" onClick="{{ closeMenu }}">Usluge</a>
-      <a href="radovi.html" onClick="{{ closeMenu }}">Radovi</a>
-      <a href="#onama" onClick="{{ closeMenu }}">O nama</a>
+      <a href="#radovi" onClick="{{ closeMenu }}">Radovi</a>
+      <a href="#proces" onClick="{{ closeMenu }}">Proces</a>
       <a href="#cijene" onClick="{{ closeMenu }}">Cijene</a>
       <a href="blog.html" onClick="{{ closeMenu }}">Blog</a>
-      <a href="#kontakt" onClick="{{ closeMenu }}" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Započni projekt</a>
+      <a href="#kontakt" onClick="{{ closeMenu }}" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Zatražite ponudu</a>
     </nav>
-    <button aria-label="Izbornik" onClick="{{ toggleMenu }}" style="{{ burgerStyle }}">
+    <button aria-label="Otvori izbornik" onClick="{{ toggleMenu }}" style="{{ burgerStyle }}">
       <span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span>
     </button>
   </header>
@@ -45,9 +63,9 @@
   <section id="top" style="padding:clamp(48px,9vw,120px) 0 clamp(60px,8vw,110px)">
     <div data-reveal style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(20,18,16,0.16);border-radius:100px;padding:8px 16px;font-size:14px;font-weight:500;margin-bottom:34px">
       <span style="width:8px;height:8px;background:#ff2e88;border-radius:50%;display:inline-block;animation:blob 2.4s ease-in-out infinite"></span>
-      Digitalna dizajn agencija · Zagreb
+      Neovisni web studio · Zagreb
     </div>
-    <h1 data-reveal style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(46px,9vw,124px);line-height:0.92;letter-spacing:-0.03em;max-width:15ch">
+    <h1 data-reveal style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(44px,9vw,124px);line-height:0.92;letter-spacing:-0.03em;max-width:15ch">
       Gradimo webove koji <span style="color:#ff2e88;font-style:italic">rade posao</span> za vas.
     </h1>
     <div style="display:flex;flex-wrap:wrap;gap:32px;align-items:flex-end;justify-content:space-between;margin-top:44px">
@@ -55,8 +73,8 @@
         Web dizajn, SEO, marketing i brendiranje za male biznise i startupe koji žele izgledati kao veliki igrači — i pretvarati posjetitelje u klijente.
       </p>
       <div data-reveal style="display:flex;gap:14px;flex-wrap:wrap">
-        <a href="#kontakt" style="background:#ff2e88;color:#fff;padding:16px 28px;border-radius:100px;font-weight:600;font-size:16px" style-hover="{{ pinkHover }}">Započnimo →</a>
-        <a href="radovi.html" style="border:1px solid rgba(20,18,16,0.2);padding:16px 28px;border-radius:100px;font-weight:600;font-size:16px" style-hover="{{ outlineHover }}">Pogledaj radove</a>
+        <a href="#kontakt" style="background:#ff2e88;color:#fff;padding:16px 28px;border-radius:100px;font-weight:600;font-size:16px" style-hover="{{ pinkHover }}">Zatražite ponudu →</a>
+        <a href="#radovi" style="border:1px solid rgba(20,18,16,0.2);padding:16px 28px;border-radius:100px;font-weight:600;font-size:16px" style-hover="{{ outlineHover }}">Pogledajte radove</a>
       </div>
     </div>
     <div data-reveal style="position:relative;margin-top:clamp(48px,7vw,90px);border-radius:28px;overflow:hidden;aspect-ratio:16/7;background:#e9e4d9">
@@ -93,86 +111,164 @@
   </section>
 
   <section id="radovi" style="padding-bottom:clamp(60px,9vw,120px)">
-    <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:40px">
-      <div data-reveal>
-        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">02 / RADOVI</span>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,66px);line-height:1;letter-spacing:-0.02em;margin-top:14px">Odabrani projekti</h2>
-      </div>
-      <div data-reveal style="display:flex;gap:10px;flex-wrap:wrap">
-        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
-          <button onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
-        </sc-for>
-      </div>
+    <div data-reveal style="max-width:60ch;margin-bottom:48px">
+      <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">02 / RADOVI</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,5.2vw,62px);line-height:1.02;letter-spacing:-0.02em;margin-top:14px">Projekti koji govore više od riječi.</h2>
+      <p style="color:#3a352f;font-size:clamp(17px,2vw,20px);line-height:1.55;margin-top:20px;max-width:54ch">Od poslovnih web stranica do online trgovina — stvaramo digitalna rješenja prilagođena stvarnim potrebama poslovanja.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:22px">
-      <sc-for list="{{ visibleWork }}" as="w" hint-placeholder-count="6">
-        <a href="radovi.html" data-reveal style="display:block;border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(20,18,16,0.1)" style-hover="{{ cardHover }}">
-          <div style="{{ w.media }}">
-            <sc-if value="{{ w.noImg }}" hint-placeholder-val="{{ true }}">
-              <span style="position:absolute;left:18px;bottom:18px;font-family:ui-monospace,monospace;font-size:12px;color:rgba(20,18,16,0.55);background:rgba(255,255,255,0.7);padding:5px 9px;border-radius:6px">{{ w.shot }}</span>
-            </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <div data-reveal style="border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(20,18,16,0.1);display:flex;flex-direction:column" style-hover="{{ cardHover }}">
+          <div style="{{ p.cover }}">
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3vw,30px);letter-spacing:-0.01em;color:#fff;line-height:1.05">{{ p.name }}</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:rgba(255,255,255,0.85);margin-top:auto">{{ p.host }}</span>
           </div>
-          <div style="padding:20px 22px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px">
+          <div style="padding:24px;display:flex;flex-direction:column;gap:16px;flex:1">
             <div>
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.01em">{{ w.name }}</h3>
-              <p style="color:#8a8375;font-size:14px;margin-top:4px">{{ w.cat }}</p>
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.01em">{{ p.name }}</h3>
+              <p style="color:#8a8375;font-size:14px;margin-top:4px">{{ p.cat }}</p>
             </div>
-            <span style="font-size:20px;color:#ff2e88">↗</span>
+            <p style="color:#3a352f;font-size:15px;line-height:1.55">{{ p.desc }}</p>
+            <div style="margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:6px">
+              <button onClick="{{ p.openCase }}" style="border:1px solid #141210;background:transparent;padding:11px 18px;border-radius:100px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit" style-hover="{{ outlineHover }}">Detalji</button>
+              <a href="{{ p.url }}" target="_blank" rel="noopener" style="background:#141210;color:#f4f1ea;padding:11px 18px;border-radius:100px;font-weight:600;font-size:14px" style-hover="{{ ctaHover }}">{{ p.cta }} ↗</a>
+            </div>
           </div>
-        </a>
+        </div>
+      </sc-for>
+    </div>
+    <div data-reveal style="text-align:center;margin-top:clamp(44px,6vw,72px)">
+      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,4vw,40px);letter-spacing:-0.02em">Stvarni projekti. Stvarna rješenja.</h3>
+      <p style="color:#3a352f;font-size:17px;line-height:1.55;max-width:46ch;margin:14px auto 0">Web stranice koje sam izradila i razvijala za stvarne poslovne potrebe.</p>
+    </div>
+  </section>
+
+  <section id="proces" style="padding-bottom:clamp(60px,9vw,120px)">
+    <div data-reveal style="max-width:52ch;margin-bottom:52px">
+      <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">03 / KAKO RADIMO</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,5.2vw,62px);line-height:1.02;letter-spacing:-0.02em;margin-top:14px">Od ideje do weba koji radi.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:20px">
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+        <div data-reveal style="border-top:2px solid #141210;padding-top:22px">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:38px;letter-spacing:-0.02em;color:#ff2e88;display:block;line-height:1">{{ st.no }}</span>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.01em;margin:14px 0 8px">{{ st.title }}</h3>
+          <p style="color:#3a352f;font-size:15px;line-height:1.55">{{ st.desc }}</p>
+        </div>
       </sc-for>
     </div>
   </section>
 
-  <section id="onama" style="padding-bottom:clamp(60px,9vw,120px)">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,6vw,80px);align-items:center">
+  <section id="zasto" style="padding-bottom:clamp(60px,9vw,120px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(32px,6vw,72px);align-items:start">
       <div data-reveal>
-        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">03 / O NAMA</span>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,5vw,58px);line-height:1;letter-spacing:-0.02em;margin:14px 0 22px">Mali tim, velika energija.</h2>
-        <p style="font-size:18px;line-height:1.6;color:#3a352f;max-width:52ch">ArtWeb je studio dizajnera i developera koji vjeruju da dobar dizajn nije ukras nego alat. Radimo blisko s klijentima, brzo iteriramo i mjerimo rezultate.</p>
-        <div style="display:flex;gap:40px;flex-wrap:wrap;margin-top:38px">
-          <sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
-            <div>
-              <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(36px,5vw,54px);line-height:1;color:#141210">{{ st.n }}</div>
-              <div style="color:#8a8375;font-size:15px;margin-top:6px">{{ st.l }}</div>
-            </div>
-          </sc-for>
+        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">04 / ZAŠTO ARTWEB</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,5vw,58px);line-height:1;letter-spacing:-0.02em;margin:14px 0 18px">Ne izrađujem samo web stranice.</h2>
+        <p style="font-size:clamp(18px,2.2vw,22px);line-height:1.5;color:#3a352f;max-width:40ch">Gradim digitalna rješenja koja imaju svrhu.</p>
+      </div>
+      <div data-reveal style="display:flex;flex-direction:column">
+        <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="6">
+          <div style="display:flex;gap:16px;align-items:center;padding:20px 0;border-top:1px solid rgba(20,18,16,0.14)">
+            <span style="flex:none;width:28px;height:28px;border-radius:50%;background:#ff2e88;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700">✓</span>
+            <span style="font-size:clamp(17px,2vw,20px);font-weight:500">{{ r }}</span>
+          </div>
+        </sc-for>
+        <div style="border-top:1px solid rgba(20,18,16,0.14)"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="onama" style="padding-bottom:clamp(60px,9vw,120px)">
+    <div data-reveal style="max-width:56ch;margin-bottom:clamp(36px,5vw,56px)">
+      <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">05 / O MENI</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,5vw,58px);line-height:1;letter-spacing:-0.02em;margin:14px 0 18px">Osoba iza ArtWeba.</h2>
+      <p style="font-size:clamp(18px,2.2vw,22px);line-height:1.5;color:#3a352f;max-width:50ch">Web stranice ne radim samo da bi izgledale dobro. Radim ih s jasnim ciljem — da vašem poslovanju budu korisne.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(32px,6vw,64px);align-items:start">
+      <div data-reveal>
+        <div style="border-radius:24px;overflow:hidden;background:#e9e4d9;aspect-ratio:4/5;border:1px solid rgba(20,18,16,0.1)">
+          <img src="assets/karolina.jpg" alt="Karolina Jandrić, osnivačica ArtWeba" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        </div>
+        <div style="margin-top:22px">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(22px,3vw,28px);letter-spacing:-0.01em">Karolina Jandrić</div>
+          <div style="color:#8a8375;font-size:15px;margin-top:4px">Osnivačica ArtWeba</div>
+          <div style="font-family:ui-monospace,monospace;font-size:13px;color:#ff2e88;font-weight:600;margin-top:8px">Web dizajn · Digitalna rješenja · SEO</div>
+          <div style="margin-top:18px;display:flex;flex-direction:column;gap:6px;font-size:15px;color:#3a352f;font-weight:500">
+            <span>Direktna komunikacija.</span>
+            <span>Individualan pristup.</span>
+            <span>Web s jasnim ciljem.</span>
+          </div>
         </div>
       </div>
-      <div data-reveal style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-        <sc-for list="{{ team }}" as="p" hint-placeholder-count="4">
-          <div style="border-radius:18px;overflow:hidden;background:#fff;border:1px solid rgba(20,18,16,0.1)">
-            <div style="{{ p.avatar }}">
-              <sc-if value="{{ p.noPhoto }}" hint-placeholder-val="{{ false }}">
-                <span style="font-family:ui-monospace,monospace;font-size:11px;color:#8a8375">[ portret ]</span>
-              </sc-if>
-            </div>
-            <div style="padding:14px 16px">
-              <div style="font-weight:600;font-size:16px">{{ p.name }}</div>
-              <div style="color:#8a8375;font-size:13px;margin-top:2px">{{ p.role }}</div>
-            </div>
+
+      <div data-reveal style="display:flex;flex-direction:column;gap:clamp(26px,4vw,36px)">
+        <div style="display:flex;flex-direction:column;gap:16px;font-size:17px;line-height:1.65;color:#3a352f;max-width:60ch">
+          <p style="margin:0"><strong style="color:#141210">Ja sam Karolina i stojim iza ArtWeba.</strong></p>
+          <p style="margin:0">ArtWeb sam pokrenula iz želje da svoje iskustvo u digitalnom svijetu pretvorim u konkretna rješenja za male poduzetnike, obrtnike i poslovanja koja žele profesionalno predstaviti ono što rade.</p>
+          <p style="margin:0">Vjerujem da dobra web stranica nije samo lijep dizajn. Ona treba jasno komunicirati tko ste, što nudite i zašto bi vam potencijalni klijent trebao vjerovati.</p>
+          <p style="margin:0">Zato svakom projektu pristupam individualno — od strukture i sadržaja, preko dizajna i funkcionalnosti, do osnovne SEO optimizacije i objave.</p>
+        </div>
+
+        <div style="background:#fff;border:1px solid rgba(20,18,16,0.1);border-radius:20px;padding:clamp(24px,3.5vw,32px)">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(20px,2.6vw,26px);letter-spacing:-0.01em;margin:0 0 14px">Zašto baš ArtWeb?</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6;color:#3a352f;max-width:58ch">
+            <p style="margin:0">Zato što želim da rad s klijentom bude jednostavan. Bez velikog broja posrednika, komplicirane komunikacije i nepotrebnih sastanaka.</p>
+            <p style="margin:0">Od prve ideje do završne stranice komunicirate direktno sa mnom.</p>
+            <p style="margin:0">Ako je za vaš projekt potrebno uključiti dodatne stručnjake, suradnike ili specijalizirane usluge, uključujem ih prema potrebi — ali vi uvijek znate tko vodi vaš projekt.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(20px,2.6vw,26px);letter-spacing:-0.01em;margin:0 0 14px">Moje iskustvo</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;font-size:16px;line-height:1.6;color:#3a352f;max-width:58ch">
+            <p style="margin:0">Moje iskustvo nije nastalo samo kroz izradu web stranica.</p>
+            <p style="margin:0">Godinama radim s ljudima, poslovanjem, prodajom, marketingom i digitalnim sadržajem. Kroz vlastite projekte naučila sam koliko je važno povezati dobar dizajn s jasnom porukom i konkretnim poslovnim ciljem.</p>
+            <p style="margin:0">Danas to iskustvo primjenjujem u izradi web stranica i digitalnih rješenja za druge.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal style="margin-top:clamp(48px,7vw,80px)">
+      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,38px);letter-spacing:-0.02em;margin:0">Moji principi</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:18px;margin-top:28px">
+        <sc-for list="{{ principles }}" as="pr" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid rgba(20,18,16,0.1);border-radius:20px;padding:26px">
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;color:#ff2e88">{{ pr.no }}</span>
+            <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.01em;margin:10px 0 8px">{{ pr.title }}</h4>
+            <p style="color:#3a352f;font-size:15px;line-height:1.55;margin:0">{{ pr.desc }}</p>
           </div>
         </sc-for>
       </div>
+    </div>
+
+    <div data-reveal style="margin-top:clamp(44px,6vw,72px);max-width:54ch;margin-left:auto;margin-right:auto;text-align:center">
+      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,4vw,40px);letter-spacing:-0.02em;margin:0">Imate projekt o kojem želite razgovarati?</h3>
+      <p style="color:#3a352f;font-size:17px;line-height:1.6;margin:16px auto 26px;max-width:48ch">Javite mi se i ukratko opišite što želite postići. Pogledat ću vaš projekt i predložiti najbolji sljedeći korak.</p>
+      <a href="#kontakt" style="display:inline-block;background:#ff2e88;color:#fff;padding:16px 30px;border-radius:100px;font-weight:600;font-size:16px" style-hover="{{ pinkHover }}">Razgovarajmo o projektu →</a>
     </div>
   </section>
 
   <section id="cijene" style="padding-bottom:clamp(60px,9vw,120px)">
     <div data-reveal style="margin-bottom:48px">
-      <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">04 / CIJENE</span>
+      <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">06 / CIJENE</span>
       <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,66px);line-height:1;letter-spacing:-0.02em;margin-top:14px">Paketi</h2>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;align-items:start">
       <sc-for list="{{ plans }}" as="pl" hint-placeholder-count="3">
         <div data-reveal style="{{ pl.wrap }}">
-          <div style="{{ pl.badge }}">{{ pl.tagline }}</div>
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;letter-spacing:-0.01em;margin-top:6px">{{ pl.name }}</h3>
-          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:46px;letter-spacing:-0.02em;margin:16px 0 4px">{{ pl.price }}</div>
-          <p style="{{ pl.sub }};font-size:14px;margin-bottom:22px">{{ pl.note }}</p>
+          <sc-if value="{{ pl.popular }}" hint-placeholder-val="{{ false }}">
+            <div style="display:inline-block;background:#ff2e88;color:#fff;font-family:ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:0.04em;padding:6px 12px;border-radius:100px;margin-bottom:16px">NAJPOPULARNIJI</div>
+          </sc-if>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:26px;letter-spacing:0.02em">{{ pl.name }}</h3>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:46px;letter-spacing:-0.02em;margin:14px 0 2px">{{ pl.price }}</div>
+          <p style="{{ pl.sub }};font-size:13px;margin-bottom:18px">početna cijena</p>
+          <p style="{{ pl.sub }};font-size:15px;line-height:1.55;margin-bottom:24px">{{ pl.desc }}</p>
           <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px">
-            <sc-for list="{{ pl.features }}" as="ft" hint-placeholder-count="4">
-              <div style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4">
-                <span style="{{ pl.check }}">✓</span><span>{{ ft }}</span>
+            <sc-for list="{{ pl.features }}" as="ft" hint-placeholder-count="5">
+              <div style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45">
+                <span style="{{ pl.check }};flex:none">✓</span><span>{{ ft }}</span>
               </div>
             </sc-for>
           </div>
@@ -180,31 +276,52 @@
         </div>
       </sc-for>
     </div>
+    <p data-reveal style="color:#3a352f;font-size:16px;line-height:1.6;max-width:70ch;margin:36px auto 0;text-align:center">Svaki projekt je drugačiji. Navedene cijene su početne, a konačnu ponudu definiram prema opsegu, funkcionalnostima i potrebama vašeg poslovanja.</p>
+
+    <div data-reveal style="margin-top:clamp(48px,7vw,80px);background:#fff;border:1px solid rgba(20,18,16,0.1);border-radius:26px;padding:clamp(28px,5vw,48px)">
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:24px">
+        <div>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,36px);letter-spacing:-0.02em">Treba vam više?</h3>
+          <p style="color:#3a352f;font-size:16px;margin-top:8px;max-width:44ch">Dodatne usluge koje uvodim prema potrebama vašeg projekta.</p>
+        </div>
+        <a href="#kontakt" style="background:#ff2e88;color:#fff;padding:14px 24px;border-radius:100px;font-weight:600;font-size:15px;white-space:nowrap" style-hover="{{ pinkHover }}">Pošalji upit →</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ addons }}" as="a" hint-placeholder-count="10">
+          <span style="border:1px solid rgba(20,18,16,0.2);border-radius:100px;padding:9px 16px;font-size:14px;font-weight:500">{{ a }}</span>
+        </sc-for>
+      </div>
+    </div>
   </section>
 
-  <section style="padding-bottom:clamp(60px,9vw,120px)">
-    <div data-reveal style="margin-bottom:48px">
-      <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">05 / DOJMOVI</span>
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,66px);line-height:1;letter-spacing:-0.02em;margin-top:14px">Što kažu klijenti</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px">
-      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
-        <figure data-reveal style="background:#fff;border:1px solid rgba(20,18,16,0.1);border-radius:22px;padding:30px">
-          <div style="color:#ff2e88;font-family:'Bricolage Grotesque',sans-serif;font-size:44px;line-height:0.6;height:26px">“</div>
-          <blockquote style="font-size:18px;line-height:1.55;margin:8px 0 22px">{{ t.quote }}</blockquote>
-          <figcaption style="display:flex;align-items:center;gap:12px">
-            <span style="width:38px;height:38px;border-radius:50%;background:repeating-linear-gradient(135deg,#e9e4d9,#e9e4d9 8px,#efeae0 8px,#efeae0 16px)"></span>
-            <span><span style="font-weight:600;display:block;font-size:15px">{{ t.name }}</span><span style="color:#8a8375;font-size:13px">{{ t.company }}</span></span>
-          </figcaption>
-        </figure>
-      </sc-for>
+  <section id="faq" style="padding-bottom:clamp(60px,9vw,120px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,6vw,72px);align-items:start">
+      <div data-reveal>
+        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">07 / FAQ</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(32px,5vw,58px);line-height:1;letter-spacing:-0.02em;margin:14px 0 18px">Česta pitanja</h2>
+        <p style="font-size:17px;line-height:1.6;color:#3a352f;max-width:38ch">Nema odgovora na vaše pitanje? <a href="#kontakt" style="color:#ff2e88;font-weight:600;border-bottom:2px solid #ff2e88">Pišite mi.</a></p>
+      </div>
+      <div data-reveal style="display:flex;flex-direction:column">
+        <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="8">
+          <div style="border-top:1px solid rgba(20,18,16,0.14)">
+            <button onClick="{{ q.toggle }}" aria-expanded="{{ q.openStr }}" style="width:100%;display:flex;gap:16px;align-items:center;justify-content:space-between;background:none;border:none;cursor:pointer;font-family:inherit;text-align:left;padding:22px 0;font-size:clamp(16px,2vw,19px);font-weight:600;color:#141210">
+              <span>{{ q.q }}</span>
+              <span style="{{ q.iconStyle }}">+</span>
+            </button>
+            <div style="{{ q.answerStyle }}">
+              <p style="color:#3a352f;font-size:16px;line-height:1.6;padding-bottom:22px;max-width:60ch">{{ q.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+        <div style="border-top:1px solid rgba(20,18,16,0.14)"></div>
+      </div>
     </div>
   </section>
 
   <section id="blog" style="padding-bottom:clamp(60px,9vw,120px)">
     <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:40px">
       <div data-reveal>
-        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">06 / BLOG</span>
+        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">08 / BLOG</span>
         <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,66px);line-height:1;letter-spacing:-0.02em;margin-top:14px">Iz našeg studija</h2>
       </div>
       <a href="blog.html" data-reveal style="font-weight:600;font-size:16px;border-bottom:2px solid #ff2e88;padding-bottom:2px">Svi članci →</a>
@@ -221,28 +338,49 @@
     </div>
   </section>
 
+  <section style="padding-bottom:clamp(60px,9vw,120px)">
+    <div data-reveal style="background:#141210;color:#f4f1ea;border-radius:32px;padding:clamp(40px,7vw,88px);text-align:center">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,6vw,72px);line-height:0.98;letter-spacing:-0.02em">Imate ideju za web?</h2>
+      <p style="font-size:clamp(17px,2.2vw,21px);line-height:1.55;color:#c9c4ba;max-width:52ch;margin:22px auto 0">Recite mi što želite postići. Zajedno ćemo pronaći najbolje digitalno rješenje za vaše poslovanje.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:34px">
+        <a href="#kontakt" style="background:#ff2e88;color:#fff;padding:16px 30px;border-radius:100px;font-weight:600;font-size:16px" style-hover="{{ pinkHover }}">Zatražite ponudu →</a>
+        <a href="#radovi" style="border:1px solid rgba(244,241,234,0.3);color:#f4f1ea;padding:16px 30px;border-radius:100px;font-weight:600;font-size:16px" style-hover="{{ darkOutlineHover }}">Pogledajte radove</a>
+      </div>
+    </div>
+  </section>
+
   <section id="kontakt" style="padding-bottom:clamp(60px,8vw,110px)">
     <div style="background:#141210;color:#f4f1ea;border-radius:32px;padding:clamp(32px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,6vw,64px)">
       <div data-reveal>
-        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">07 / KONTAKT</span>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5vw,60px);line-height:0.98;letter-spacing:-0.02em;margin:16px 0 20px">Imate ideju?<br>Javite se.</h2>
-        <p style="font-size:17px;line-height:1.6;color:#c9c4ba;max-width:42ch">Ispunite formu ili nam pišite direktno — odgovaramo unutar 24 sata radnim danom.</p>
+        <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600">09 / KONTAKT</span>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(34px,5vw,60px);line-height:0.98;letter-spacing:-0.02em;margin:16px 0 20px">Javite se.</h2>
+        <p style="font-size:17px;line-height:1.6;color:#c9c4ba;max-width:42ch">Ispunite formu ili mi pišite direktno — odgovaram unutar 24 sata radnim danom.</p>
         <div style="display:flex;flex-direction:column;gap:10px;margin-top:32px;font-size:16px">
-          <a href="mailto:hello@artweb.hr" style="color:#f4f1ea" style-hover="{{ pinkText }}">hello@artweb.hr</a>
-          <a href="tel:+385" style="color:#f4f1ea" style-hover="{{ pinkText }}">+385 1 234 5678</a>
+          <a href="mailto:freedomteamhr@gmail.com" style="color:#f4f1ea" style-hover="{{ pinkText }}">freedomteamhr@gmail.com</a>
+          <a href="tel:+385955608572" style="color:#f4f1ea" style-hover="{{ pinkText }}">+385 95 560 8572</a>
           <span style="color:#8a8375">Zagreb, Hrvatska</span>
         </div>
       </div>
       <form onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:16px">
         <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
-          <div style="background:#ff2e88;color:#fff;border-radius:16px;padding:24px;font-size:17px;font-weight:600">Hvala! Poruka je poslana — javljamo se uskoro.</div>
+          <div style="background:#ff2e88;color:#fff;border-radius:16px;padding:24px;font-size:17px;font-weight:600">Hvala! Upit je poslan — javljam se uskoro.</div>
         </sc-if>
         <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex;flex-direction:column;gap:16px">
             <input required placeholder="Ime i prezime" style="{{ inputStyle }}"/>
             <input required type="email" placeholder="Email" style="{{ inputStyle }}"/>
-            <input placeholder="Tvrtka (opcionalno)" style="{{ inputStyle }}"/>
-            <textarea required placeholder="O čemu se radi?" rows="4" style="{{ inputStyle }};resize:vertical;font-family:inherit"></textarea>
+            <input placeholder="Naziv poslovanja" style="{{ inputStyle }}"/>
+            <select required style="{{ selectStyle }}" defaultValue="">
+              <option value="" disabled>Što vam treba?</option>
+              <option>Nova web stranica</option>
+              <option>Redizajn postojeće stranice</option>
+              <option>Landing page</option>
+              <option>Webshop</option>
+              <option>SEO</option>
+              <option>Održavanje</option>
+              <option>Nešto drugo</option>
+            </select>
+            <textarea required placeholder="Poruka" rows="4" style="{{ inputStyle }};resize:vertical;font-family:inherit"></textarea>
             <button type="submit" style="background:#ff2e88;color:#fff;border:none;padding:16px;border-radius:100px;font-weight:600;font-size:16px;cursor:pointer;font-family:inherit" style-hover="{{ pinkHover }}">Pošalji upit →</button>
           </div>
         </sc-if>
@@ -255,16 +393,51 @@
       <span style="width:12px;height:12px;background:#ff2e88;border-radius:50%;display:inline-block"></span>ArtWeb
     </a>
     <nav style="display:flex;gap:24px;font-size:15px;flex-wrap:wrap">
-      <a href="#usluge">Usluge</a><a href="radovi.html">Radovi</a><a href="#onama">O nama</a><a href="#cijene">Cijene</a><a href="blog.html">Blog</a>
+      <a href="#usluge">Usluge</a><a href="#radovi">Radovi</a><a href="#proces">Proces</a><a href="#cijene">Cijene</a><a href="blog.html">Blog</a>
     </nav>
     <span style="color:#8a8375;font-size:14px">© 2026 ArtWeb studio</span>
   </footer>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCase }}" style="position:fixed;inset:0;background:rgba(20,18,16,0.62);backdrop-filter:blur(4px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px">
+      <div onClick="{{ stop }}" style="background:#f4f1ea;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;border-radius:24px;position:relative">
+        <div style="{{ modal.cover }}">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,36px);color:#fff;letter-spacing:-0.01em">{{ modal.name }}</span>
+        </div>
+        <button onClick="{{ closeCase }}" aria-label="Zatvori" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(20,18,16,0.55);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center">×</button>
+        <div style="padding:clamp(24px,5vw,44px)">
+          <p style="color:#8a8375;font-size:14px;font-family:ui-monospace,monospace">{{ modal.cat }}</p>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">O PROJEKTU</h4>
+            <p style="font-size:16px;line-height:1.6;color:#141210;margin-top:8px">{{ modal.desc }}</p>
+          </div>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">CILJ</h4>
+            <p style="font-size:16px;line-height:1.6;color:#141210;margin-top:8px">{{ modal.cilj }}</p>
+          </div>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">ŠTO SMO NAPRAVILI</h4>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+              <sc-for list="{{ modal.napravili }}" as="n" hint-placeholder-count="6">
+                <span style="border:1px solid rgba(20,18,16,0.2);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:500">{{ n }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">REZULTAT / ISHOD</h4>
+            <p style="font-size:16px;line-height:1.6;color:#141210;margin-top:8px">{{ modal.rezultat }}</p>
+          </div>
+          <a href="{{ modal.url }}" target="_blank" rel="noopener" style="display:inline-block;margin-top:30px;background:#141210;color:#f4f1ea;padding:14px 26px;border-radius:100px;font-weight:600;font-size:15px" style-hover="{{ ctaHover }}">{{ modal.cta }} ↗</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { active: 'Sve', sent: false, isMobile: false, menuOpen: false };
+  state = { sent: false, isMobile: false, menuOpen: false, openProject: null, openFaq: null };
 
   componentDidMount() {
     this._onResize = () => {
@@ -273,7 +446,6 @@ class Component extends DCLogic {
     };
     this._onResize();
     window.addEventListener('resize', this._onResize);
-    const els = this.host ? null : null;
     const nodes = document.querySelectorAll('[data-reveal]');
     nodes.forEach(n => {
       n.style.opacity = '0';
@@ -298,13 +470,15 @@ class Component extends DCLogic {
     const { isMobile, menuOpen } = this.state;
     const navStyle = isMobile
       ? `display:${menuOpen ? 'flex' : 'none'};flex-direction:column;gap:6px;align-items:stretch;position:absolute;top:100%;left:0;right:0;background:#f4f1ea;border-top:1px solid rgba(20,18,16,0.12);padding:16px clamp(20px,5vw,64px) 24px;font-size:18px;font-weight:500;box-shadow:0 24px 40px rgba(20,18,16,0.1)`
-      : 'display:flex;gap:30px;align-items:center;font-size:15px;font-weight:500';
+      : 'display:flex;gap:28px;align-items:center;font-size:15px;font-weight:500';
     const burgerStyle = `display:${isMobile ? 'flex' : 'none'};flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:10px`;
-    const burgerBar = `display:block;height:2px;width:100%;background:#141210;border-radius:2px;transition:transform .25s,opacity .25s;transform-origin:center;${menuOpen ? '' : ''}`;
+    const burgerBar = 'display:block;height:2px;width:100%;background:#141210;border-radius:2px';
     const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
     const closeMenu = () => this.setState({ menuOpen: false });
+
     const pinkHover = { background: '#e01f78', transform: 'translateY(-2px)' };
-    const outlineHover = { borderColor: '#141210', transform: 'translateY(-2px)' };
+    const outlineHover = { borderColor: '#ff2e88', color: '#ff2e88' };
+    const darkOutlineHover = { borderColor: '#f4f1ea' };
     const ctaHover = { background: '#ff2e88' };
     const rowHover = { background: 'rgba(255,46,136,0.05)', paddingLeft: '12px' };
     const cardHover = { transform: 'translateY(-6px)', boxShadow: '0 20px 40px rgba(20,18,16,0.12)' };
@@ -318,55 +492,101 @@ class Component extends DCLogic {
       { no: '04', title: 'Brendiranje', desc: 'Logo, vizualni identitet i ton komunikacije koji vas izdvajaju od konkurencije.', tag: 'Identity' },
     ];
 
-    const cats = ['Sve', 'Web', 'Brending', 'Shop'];
-    const workAll = [
-      { name: 'Kava Nord', cat: 'Web', shot: '[ web shot ]', bg: '#f2d0e2', img: 'assets/work-kavanord.jpg', noImg: false },
-      { name: 'Studio Luma', cat: 'Brending', shot: '[ brand shot ]', bg: '#dfe6d8', img: 'assets/work-studioluma.jpg', pos: 'center 68%' },
-      { name: 'Verde Shop', cat: 'Shop', shot: '[ shop shot ]', bg: '#e6dcc5', img: 'assets/work-verdeshop.jpg', pos: 'top center' },
-      { name: 'Pulse Fit', cat: 'Web', shot: '[ web shot ]', bg: '#d6e2ec', img: 'assets/work-pulsefit.jpg', pos: 'top center' },
+    const shade = 'linear-gradient(180deg,rgba(20,18,16,0) 40%,rgba(20,18,16,0.55) 100%)';
+    const cardCover = (grad, img) => `aspect-ratio:16/10;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:${shade}, ${img ? `url('${img}') top center/cover no-repeat` : grad}`;
+    const modalCover = (grad, img) => `aspect-ratio:16/7;display:flex;align-items:flex-end;padding:clamp(24px,5vw,40px);border-radius:24px 24px 0 0;background:${shade}, ${img ? `url('${img}') top center/cover no-repeat` : grad}`;
+    const rawProjects = [
+      { name: 'FREEDOM TEAM', host: 'freedom.com.hr', cat: 'Poslovna web stranica / Content & Community', url: 'https://freedom.com.hr/', cta: 'Posjeti web', grad: 'linear-gradient(135deg,#0f2233,#204a63)', img: 'assets/work-freedom.png',
+        desc: 'Poslovna web stranica usmjerena na predstavljanje brenda, poslovne ponude, edukativnog sadržaja i izgradnju povjerenja s potencijalnim klijentima.',
+        cilj: 'Predstaviti brend i poslovnu ponudu te izgraditi povjerenje s potencijalnim klijentima kroz jasnu strukturu i edukativni sadržaj.',
+        napravili: ['poslovna prezentacijska web stranica', 'jasna struktura ponude', 'više podstranica', 'blog', 'edukativni sadržaj', 'kontakt i CTA elementi', 'responsive dizajn', 'SEO struktura', 'sadržaj usmjeren prema korisniku'],
+        rezultat: 'Ishod: moderna, responzivna i jasno strukturirana web stranica prilagođena potrebama projekta.' },
+      { name: 'DR+HEMP', host: 'drhemp.hr', cat: 'Webshop / E-commerce', url: 'https://drhemp.hr/', cta: 'Posjeti webshop', grad: 'linear-gradient(135deg,#14401f,#2f7d43)', img: 'assets/work-drhemp.png',
+        desc: 'Online trgovina s kompletnom ecommerce strukturom, kategorijama proizvoda, korisničkim računom, košaricom, blogom i sustavom naručivanja.',
+        cilj: 'Postaviti funkcionalnu online trgovinu s cjelovitim procesom kupnje i jasnim korisničkim iskustvom.',
+        napravili: ['WooCommerce webshop', 'kategorije proizvoda', 'stranice proizvoda', 'košarica', 'korisnički račun', 'naručivanje', 'blog', 'kontakt', 'responsive dizajn', 'ecommerce korisničko iskustvo'],
+        rezultat: 'Ishod: moderna, responzivna i jasno strukturirana web stranica prilagođena potrebama projekta.' },
+      { name: 'TOTAL ADVISEMENT', host: 'total-advisement.hr', cat: 'Poslovna web stranica', url: 'https://total-advisement.hr/', cta: 'Posjeti web', grad: 'linear-gradient(135deg,#10303a,#1f6b73)', img: 'assets/work-total.png',
+        desc: 'Poslovna web stranica marketinške agencije s jasno strukturiranim uslugama, projektima, edukacijama i poslovnim sadržajem.',
+        cilj: 'Jasno strukturirati usluge, projekte i edukacije marketinške agencije uz preglednu navigaciju.',
+        napravili: ['poslovna prezentacijska stranica', 'struktura usluga', 'projekti', 'edukacijske usluge', 'seminari', 'kontakt', 'responsive dizajn', 'jasna navigacija'],
+        rezultat: 'Ishod: moderna, responzivna i jasno strukturirana web stranica prilagođena potrebama projekta.' },
     ];
-    const active = this.state.active;
-    const withMedia = (w) => ({ ...w, noImg: !w.img, media: w.img
-      ? `aspect-ratio:4/3;position:relative;overflow:hidden;background:${w.bg} url('${w.img}') ${w.pos || 'top center'}/cover no-repeat`
-      : `aspect-ratio:4/3;position:relative;overflow:hidden;background:${w.bg}` });
-    const visibleWork = (active === 'Sve' ? workAll : workAll.filter(w => w.cat === active)).map(withMedia);
-    const filters = cats.map(c => ({
-      label: c,
-      onClick: () => this.setState({ active: c }),
-      style: `padding:10px 18px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;border:1px solid ${active === c ? '#141210' : 'rgba(20,18,16,0.2)'};background:${active === c ? '#141210' : 'transparent'};color:${active === c ? '#f4f1ea' : '#141210'}`,
-    }));
+    const projects = rawProjects.map((p, i) => ({ ...p, cover: cardCover(p.grad, p.img), openCase: () => this.setState({ openProject: i }) }));
+    const op = this.state.openProject;
+    const modalOpen = op != null;
+    const modal = op != null ? { ...rawProjects[op], cover: modalCover(rawProjects[op].grad, rawProjects[op].img) } : { napravili: [] };
+    const closeCase = () => this.setState({ openProject: null });
+    const stop = (e) => e.stopPropagation();
 
-    const stats = [
-      { n: '80+', l: 'projekata' },
-      { n: '6 god', l: 'iskustva' },
-      { n: '98%', l: 'zadovoljnih' },
+    const steps = [
+      { no: '01', title: 'Razgovor', desc: 'Upoznajem vaš posao, ciljeve i publiku.' },
+      { no: '02', title: 'Strategija', desc: 'Definiram strukturu, sadržaj i funkciju web stranice.' },
+      { no: '03', title: 'Dizajn', desc: 'Kreiram vizualni smjer koji odgovara vašem brendu.' },
+      { no: '04', title: 'Izrada', desc: 'Razvijam responzivnu i funkcionalnu web stranicu.' },
+      { no: '05', title: 'Testiranje', desc: 'Provjeravam prikaz, funkcionalnost, brzinu i korisničko iskustvo.' },
+      { no: '06', title: 'Objava', desc: 'Stranica ide online, a ja vam po potrebi ostajem podrška i nakon lansiranja.' },
     ];
-    const team = [
-      { name: 'Ana Kovač', role: 'Web dizajn', photo: 'assets/team-ana.jpg' },
-      { name: 'Marko Jurić', role: 'Marketing', photo: 'assets/team-marko.jpg' },
-    ].map(p => ({ ...p, noPhoto: !p.photo, avatar: 'aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:' + (p.photo
-      ? `#e9e4d9 url('${p.photo}') center/cover no-repeat`
-      : 'repeating-linear-gradient(135deg,#e9e4d9,#e9e4d9 12px,#efeae0 12px,#efeae0 24px)') }));
+
+    const reasons = [
+      'Razmišljam o poslovnom cilju',
+      'Dizajn prilagođavam vašim korisnicima',
+      'Mobile-first pristup',
+      'SEO od početka',
+      'Jasna komunikacija',
+      'Mogućnost daljnjeg razvoja',
+    ];
+
+    const principles = [
+      { no: '01', title: 'Jasno', desc: 'Web stranica mora posjetitelju odmah objasniti tko ste i što nudite.' },
+      { no: '02', title: 'Funkcionalno', desc: 'Svaki element treba imati svoju svrhu.' },
+      { no: '03', title: 'Prilagođeno', desc: 'Ne koristim isto rješenje za svaki posao.' },
+      { no: '04', title: 'Dugoročno', desc: 'Web stranica treba biti temelj koji se može dalje razvijati.' },
+    ];
 
     const baseWrap = 'background:#fff;border:1px solid rgba(20,18,16,0.1);border-radius:24px;padding:32px';
     const featWrap = 'background:#141210;color:#f4f1ea;border:1px solid #141210;border-radius:24px;padding:32px';
     const plans = [
-      { name: 'Start', tagline: 'ZA POČETAK', price: '€990', note: 'jednokratno', features: ['Landing stranica (do 5 sekcija)', 'Responzivni dizajn', 'Osnovni SEO setup', 'Isporuka za 2 tjedna'], cta: 'Odaberi Start',
-        wrap: baseWrap, badge: 'font-family:ui-monospace,monospace;font-size:12px;color:#8a8375;font-weight:600', sub: 'color:#8a8375', check: 'color:#ff2e88;font-weight:700',
+      { name: 'START', price: 'od 790 €', popular: false,
+        desc: 'Za one kojima treba profesionalna web prisutnost bez nepotrebne složenosti.',
+        features: ['responzivni dizajn', 'landing page ili jednostavnu prezentacijsku stranicu', 'do 5 glavnih sekcija', 'kontakt formu', 'osnovnu SEO optimizaciju', 'mobilnu optimizaciju', 'povezivanje domene', 'osnovnu analitiku'],
+        cta: 'Zatraži START',
+        wrap: baseWrap, sub: 'color:#8a8375', check: 'color:#ff2e88;font-weight:700',
         btn: 'display:block;text-align:center;border:1px solid #141210;padding:14px;border-radius:100px;font-weight:600' },
-      { name: 'Grow', tagline: 'NAJPOPULARNIJE', price: '€2.400', note: 'jednokratno', features: ['Web do 8 stranica', 'Custom dizajn i animacije', 'SEO + Google Analytics', 'CMS za samostalno uređivanje', '30 dana podrške'], cta: 'Odaberi Grow',
-        wrap: featWrap, badge: 'font-family:ui-monospace,monospace;font-size:12px;color:#ff2e88;font-weight:700', sub: 'color:#c9c4ba', check: 'color:#ff2e88;font-weight:700',
+      { name: 'GROW', price: 'od 1.490 €', popular: true,
+        desc: 'Za poslovanja koja žele profesionalnu web stranicu koja može rasti zajedno s njima.',
+        features: ['kompletan web dizajn', 'više podstranica', 'prilagođenu strukturu sadržaja', 'responsive dizajn', 'osnovni SEO', 'kontakt forme', 'osnovnu analitiku', 'integracije prema potrebi', 'osnovnu edukaciju za upravljanje sadržajem'],
+        cta: 'Zatraži GROW',
+        wrap: featWrap, sub: 'color:#c9c4ba', check: 'color:#ff2e88;font-weight:700',
         btn: 'display:block;text-align:center;background:#ff2e88;color:#fff;padding:14px;border-radius:100px;font-weight:600' },
-      { name: 'Scale', tagline: 'ZA RAST', price: 'Custom', note: 'po dogovoru', features: ['Webshop / kompleksni web', 'Brending + strategija', 'Kontinuirani marketing', 'Mjesečna optimizacija', 'Dedicirani tim'], cta: 'Dogovori poziv',
-        wrap: baseWrap, badge: 'font-family:ui-monospace,monospace;font-size:12px;color:#8a8375;font-weight:600', sub: 'color:#8a8375', check: 'color:#ff2e88;font-weight:700',
+      { name: 'SCALE', price: 'od 2.490 €', popular: false,
+        desc: 'Za webshopove, kompleksnije projekte i poslovanja kojima treba naprednije digitalno rješenje.',
+        features: ['naprednu strukturu', 'webshop ili složenije funkcionalnosti', 'napredni SEO', 'integracije', 'analitiku', 'individualni plan razvoja'],
+        cta: 'Razgovarajmo o projektu',
+        wrap: baseWrap, sub: 'color:#8a8375', check: 'color:#ff2e88;font-weight:700',
         btn: 'display:block;text-align:center;border:1px solid #141210;padding:14px;border-radius:100px;font-weight:600' },
     ];
 
-    const testimonials = [
-      { quote: 'Novi web je udvostručio broj upita ve\u0107 u prvom mjesecu. Tim koji stvarno sluša.', name: 'Petra Horvat', company: 'Kava Nord' },
-      { quote: 'Profesionalni od prvog dana. Dizajn je točno ono što smo trebali, a nismo znali opisati.', name: 'Domagoj Šimi\u0107', company: 'Pulse Fit' },
-      { quote: 'SEO rezultati su došli brzo i konkretno. Preporuka svakome tko želi rasti online.', name: 'Maja Vukovi\u0107', company: 'Verde Shop' },
+    const addons = ['SEO', 'Održavanje', 'Dodavanje sadržaja', 'Copywriting', 'Branding', 'Google Analytics', 'Google Search Console', 'Google Ads', 'Društvene mreže', 'Webshop funkcionalnosti'];
+
+    const faqData = [
+      { q: 'Koliko traje izrada web stranice?', a: 'Ovisno o opsegu, obično od 2 do 6 tjedana. Točan rok dogovaram na početku projekta.' },
+      { q: 'Trebam li imati gotove tekstove i fotografije?', a: 'Ne nužno. Možete ih dostaviti sami ili vam pomažem s copywritingom i odabirom vizuala.' },
+      { q: 'Je li web prilagođen mobitelima?', a: 'Da. Sve stranice radim mobile-first, tako da izgledaju i rade besprijekorno na svim uređajima.' },
+      { q: 'Mogu li kasnije sama uređivati sadržaj?', a: 'Da. Uz CMS možete samostalno mijenjati tekst i slike, a po potrebi vas educiram za korištenje.' },
+      { q: 'Je li SEO uključen?', a: 'Osnovna SEO optimizacija uključena je od početka. Napredni SEO dostupan je kao dodatna usluga.' },
+      { q: 'Mogu li koristiti vlastitu domenu i hosting?', a: 'Naravno. Radim s vašom postojećom domenom i hostingom ili vam pomažem pri odabiru.' },
+      { q: 'Koliko košta održavanje?', a: 'Održavanje je opcionalno i definira se prema potrebama projekta. Cijenu dogovaram ovisno o opsegu.' },
+      { q: 'Mogu li kasnije dodati webshop?', a: 'Da. Stranicu gradim tako da je moguće nadograditi webshop i dodatne funkcionalnosti kad zatreba.' },
     ];
+    const openFaq = this.state.openFaq;
+    const faqs = faqData.map((f, i) => {
+      const open = openFaq === i;
+      return { ...f, open, openStr: open ? 'true' : 'false',
+        toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? null : i })),
+        iconStyle: `flex:none;width:26px;height:26px;border-radius:50%;border:1px solid rgba(20,18,16,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:400;transition:transform .25s;transform:rotate(${open ? '45deg' : '0deg'})`,
+        answerStyle: `overflow:hidden;transition:max-height .3s ease;max-height:${open ? '400px' : '0px'}` };
+    });
 
     const rawPosts = [
       { cat: 'DIZAJN', title: '5 znakova da vam web treba redizajn', date: 'Rujan 2026', img: 'assets/blog-redizajn.png' },
@@ -376,11 +596,13 @@ class Component extends DCLogic {
     const posts = rawPosts.map(p => ({ ...p, cover: `aspect-ratio:16/10;border-radius:18px;margin-bottom:16px;overflow:hidden;background:#e9e4d9 url('${p.img}') center/cover no-repeat` }));
 
     const inputStyle = 'background:rgba(244,241,234,0.06);border:1px solid rgba(244,241,234,0.2);color:#f4f1ea;padding:15px 18px;border-radius:12px;font-size:16px;font-family:inherit;outline:none';
+    const selectStyle = inputStyle + ';appearance:none;cursor:pointer';
 
     return {
       navStyle, burgerStyle, burgerBar, toggleMenu, closeMenu,
-      services, filters, visibleWork, stats, team, plans, testimonials, posts,
-      inputStyle, pinkHover, outlineHover, ctaHover, rowHover, cardHover, postHover, pinkText,
+      services, projects, modal, modalOpen, closeCase, stop,
+      steps, reasons, principles, plans, addons, faqs, posts,
+      inputStyle, selectStyle, pinkHover, outlineHover, darkOutlineHover, ctaHover, rowHover, cardHover, postHover, pinkText,
       sent: this.state.sent, notSent: !this.state.sent,
       onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
     };

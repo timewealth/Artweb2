@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radovi | ArtWeb — izrada web stranica i webshopova</title>
+<meta name="description" content="Odabrani projekti ArtWeb studija: Freedom Team, Dr+Hemp i Total Advisement. Poslovne web stranice i webshopovi izrađeni za stvarne poslovne potrebe.">
+<link rel="canonical" href="https://timewealth.github.io/Artweb2/radovi.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Radovi | ArtWeb — izrada web stranica i webshopova">
+<meta property="og:description" content="Odabrani projekti ArtWeb studija: Freedom Team, Dr+Hemp i Total Advisement.">
+<meta property="og:locale" content="hr_HR">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -20,7 +27,7 @@
   ::selection{background:#ff2e88;color:#fff}
 </style>
 </helmet>
-<div style="max-width:1400px;margin:0 auto;padding:0 clamp(20px,5vw,64px)">
+<div style="max-width:1400px;margin:0 auto;padding:0 clamp(20px,5vw,64px);overflow-x:hidden">
 
   <header style="display:flex;align-items:center;justify-content:space-between;padding:26px 0;position:sticky;top:0;z-index:50;background:rgba(244,241,234,0.82);backdrop-filter:blur(10px)">
     <a href="index.html" style="display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;letter-spacing:-0.02em">
@@ -29,53 +36,55 @@
     <nav style="{{ navStyle }}">
       <a href="index.html#usluge" onClick="{{ closeMenu }}">Usluge</a>
       <a href="radovi.html" onClick="{{ closeMenu }}" style="color:#ff2e88">Radovi</a>
-      <a href="index.html#onama" onClick="{{ closeMenu }}">O nama</a>
+      <a href="index.html#proces" onClick="{{ closeMenu }}">Proces</a>
       <a href="index.html#cijene" onClick="{{ closeMenu }}">Cijene</a>
       <a href="blog.html" onClick="{{ closeMenu }}">Blog</a>
-      <a href="index.html#kontakt" onClick="{{ closeMenu }}" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Započni projekt</a>
+      <a href="index.html#kontakt" onClick="{{ closeMenu }}" style="background:#141210;color:#f4f1ea;padding:11px 20px;border-radius:100px;font-weight:600" style-hover="{{ ctaHover }}">Zatražite ponudu</a>
     </nav>
-    <button aria-label="Izbornik" onClick="{{ toggleMenu }}" style="{{ burgerStyle }}">
+    <button aria-label="Otvori izbornik" onClick="{{ toggleMenu }}" style="{{ burgerStyle }}">
       <span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span><span style="{{ burgerBar }}"></span>
     </button>
   </header>
 
-  <section style="padding:clamp(48px,8vw,110px) 0 clamp(32px,5vw,56px)">
+  <section style="padding:clamp(48px,8vw,110px) 0 clamp(40px,6vw,64px)">
     <a href="index.html" style="font-size:15px;color:#8a8375;font-weight:500">← Naslovna</a>
     <span style="font-family:ui-monospace,monospace;font-size:14px;color:#ff2e88;font-weight:600;display:block;margin-top:28px">RADOVI</span>
-    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(46px,8vw,104px);line-height:0.94;letter-spacing:-0.03em;margin-top:14px;max-width:16ch">Projekti kojima se ponosimo</h1>
-    <p style="font-size:clamp(18px,2.2vw,22px);line-height:1.5;max-width:52ch;color:#3a352f;margin-top:26px">Izbor iz našeg portfelja — web sajtovi, webshopovi i brend identiteti za male biznise i startupe.</p>
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(42px,7.5vw,96px);line-height:0.96;letter-spacing:-0.03em;margin-top:14px;max-width:18ch">Projekti koji govore više od riječi.</h1>
+    <p style="font-size:clamp(18px,2.2vw,22px);line-height:1.5;max-width:54ch;color:#3a352f;margin-top:26px">Od poslovnih web stranica do online trgovina — stvaramo digitalna rješenja prilagođena stvarnim potrebama poslovanja.</p>
   </section>
 
   <section style="padding-bottom:clamp(40px,6vw,72px)">
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px">
-      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
-        <button onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</button>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:22px">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <div style="border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(20,18,16,0.1);display:flex;flex-direction:column" style-hover="{{ cardHover }}">
+          <div style="{{ p.cover }}">
+            <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3vw,32px);letter-spacing:-0.01em;color:#fff;line-height:1.05">{{ p.name }}</span>
+            <span style="font-family:ui-monospace,monospace;font-size:12px;color:rgba(255,255,255,0.85);margin-top:auto">{{ p.host }}</span>
+          </div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div>
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.01em">{{ p.name }}</h3>
+              <p style="color:#8a8375;font-size:14px;margin-top:4px">{{ p.cat }}</p>
+            </div>
+            <p style="color:#3a352f;font-size:15px;line-height:1.55">{{ p.desc }}</p>
+            <div style="margin-top:auto;display:flex;gap:10px;flex-wrap:wrap;padding-top:6px">
+              <button onClick="{{ p.openCase }}" style="border:1px solid #141210;background:transparent;padding:11px 18px;border-radius:100px;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit" style-hover="{{ outlineHover }}">Detalji</button>
+              <a href="{{ p.url }}" target="_blank" rel="noopener" style="background:#141210;color:#f4f1ea;padding:11px 18px;border-radius:100px;font-weight:600;font-size:14px" style-hover="{{ ctaHover }}">{{ p.cta }} ↗</a>
+            </div>
+          </div>
+        </div>
       </sc-for>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:22px">
-      <sc-for list="{{ visibleWork }}" as="w" hint-placeholder-count="9">
-        <a href="index.html#kontakt" style="display:block;border-radius:22px;overflow:hidden;background:#fff;border:1px solid rgba(20,18,16,0.1)" style-hover="{{ cardHover }}">
-          <div style="{{ w.media }}">
-            <sc-if value="{{ w.noImg }}" hint-placeholder-val="{{ true }}">
-              <span style="position:absolute;left:18px;bottom:18px;font-family:ui-monospace,monospace;font-size:12px;color:rgba(20,18,16,0.55);background:rgba(255,255,255,0.7);padding:5px 9px;border-radius:6px">{{ w.shot }}</span>
-            </sc-if>
-          </div>
-          <div style="padding:20px 22px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px">
-            <div>
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.01em">{{ w.name }}</h3>
-              <p style="color:#8a8375;font-size:14px;margin-top:4px">{{ w.cat }} · {{ w.year }}</p>
-            </div>
-            <span style="font-size:20px;color:#ff2e88">↗</span>
-          </div>
-        </a>
-      </sc-for>
+    <div style="text-align:center;margin-top:clamp(44px,6vw,72px)">
+      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,4vw,40px);letter-spacing:-0.02em">Stvarni projekti. Stvarna rješenja.</h3>
+      <p style="color:#3a352f;font-size:17px;line-height:1.55;max-width:46ch;margin:14px auto 0">Web stranice koje sam izradila i razvijala za stvarne poslovne potrebe.</p>
     </div>
   </section>
 
-  <section style="padding:clamp(40px,6vw,80px) 0 clamp(60px,8vw,110px)">
+  <section style="padding:clamp(20px,4vw,40px) 0 clamp(60px,8vw,110px)">
     <div style="background:#141210;color:#f4f1ea;border-radius:32px;padding:clamp(36px,6vw,72px);text-align:center">
       <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,5vw,56px);line-height:1;letter-spacing:-0.02em">Vaš projekt je sljedeći?</h2>
-      <a href="index.html#kontakt" style="display:inline-block;background:#ff2e88;color:#fff;padding:16px 30px;border-radius:100px;font-weight:600;font-size:16px;margin-top:28px" style-hover="{{ pinkHover }}">Javite nam se →</a>
+      <a href="index.html#kontakt" style="display:inline-block;background:#ff2e88;color:#fff;padding:16px 30px;border-radius:100px;font-weight:600;font-size:16px;margin-top:28px" style-hover="{{ pinkHover }}">Zatražite ponudu →</a>
     </div>
   </section>
 
@@ -84,16 +93,51 @@
       <span style="width:12px;height:12px;background:#ff2e88;border-radius:50%;display:inline-block"></span>ArtWeb
     </a>
     <nav style="display:flex;gap:24px;font-size:15px;flex-wrap:wrap">
-      <a href="index.html#usluge">Usluge</a><a href="radovi.html">Radovi</a><a href="index.html#onama">O nama</a><a href="index.html#cijene">Cijene</a><a href="blog.html">Blog</a>
+      <a href="index.html#usluge">Usluge</a><a href="radovi.html">Radovi</a><a href="index.html#proces">Proces</a><a href="index.html#cijene">Cijene</a><a href="blog.html">Blog</a>
     </nav>
     <span style="color:#8a8375;font-size:14px">© 2026 ArtWeb studio</span>
   </footer>
+
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeCase }}" style="position:fixed;inset:0;background:rgba(20,18,16,0.62);backdrop-filter:blur(4px);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px">
+      <div onClick="{{ stop }}" style="background:#f4f1ea;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;border-radius:24px;position:relative">
+        <div style="{{ modal.cover }}">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,36px);color:#fff;letter-spacing:-0.01em">{{ modal.name }}</span>
+        </div>
+        <button onClick="{{ closeCase }}" aria-label="Zatvori" style="position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:none;background:rgba(20,18,16,0.55);color:#fff;font-size:22px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center">×</button>
+        <div style="padding:clamp(24px,5vw,44px)">
+          <p style="color:#8a8375;font-size:14px;font-family:ui-monospace,monospace">{{ modal.cat }}</p>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">O PROJEKTU</h4>
+            <p style="font-size:16px;line-height:1.6;color:#141210;margin-top:8px">{{ modal.desc }}</p>
+          </div>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">CILJ</h4>
+            <p style="font-size:16px;line-height:1.6;color:#141210;margin-top:8px">{{ modal.cilj }}</p>
+          </div>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">ŠTO SMO NAPRAVILI</h4>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+              <sc-for list="{{ modal.napravili }}" as="n" hint-placeholder-count="6">
+                <span style="border:1px solid rgba(20,18,16,0.2);border-radius:100px;padding:7px 14px;font-size:13px;font-weight:500">{{ n }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="margin-top:26px">
+            <h4 style="font-family:ui-monospace,monospace;font-size:13px;letter-spacing:0.06em;color:#ff2e88;font-weight:700">REZULTAT / ISHOD</h4>
+            <p style="font-size:16px;line-height:1.6;color:#141210;margin-top:8px">{{ modal.rezultat }}</p>
+          </div>
+          <a href="{{ modal.url }}" target="_blank" rel="noopener" style="display:inline-block;margin-top:30px;background:#141210;color:#f4f1ea;padding:14px 26px;border-radius:100px;font-weight:600;font-size:15px" style-hover="{{ ctaHover }}">{{ modal.cta }} ↗</a>
+        </div>
+      </div>
+    </div>
+  </sc-if>
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { active: 'Sve', isMobile: false, menuOpen: false };
+  state = { isMobile: false, menuOpen: false, openProject: null };
   componentDidMount() {
     this._onResize = () => {
       const m = window.innerWidth <= 820;
@@ -107,7 +151,7 @@ class Component extends DCLogic {
     const { isMobile, menuOpen } = this.state;
     const navStyle = isMobile
       ? `display:${menuOpen ? 'flex' : 'none'};flex-direction:column;gap:6px;align-items:stretch;position:absolute;top:100%;left:0;right:0;background:#f4f1ea;border-top:1px solid rgba(20,18,16,0.12);padding:16px clamp(20px,5vw,64px) 24px;font-size:18px;font-weight:500;box-shadow:0 24px 40px rgba(20,18,16,0.1)`
-      : 'display:flex;gap:30px;align-items:center;font-size:15px;font-weight:500';
+      : 'display:flex;gap:28px;align-items:center;font-size:15px;font-weight:500';
     const burgerStyle = `display:${isMobile ? 'flex' : 'none'};flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer;padding:10px`;
     const burgerBar = 'display:block;height:2px;width:100%;background:#141210;border-radius:2px';
     const toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
@@ -115,25 +159,36 @@ class Component extends DCLogic {
     const ctaHover = { background: '#ff2e88' };
     const cardHover = { transform: 'translateY(-6px)', boxShadow: '0 20px 40px rgba(20,18,16,0.12)' };
     const pinkHover = { background: '#e01f78', transform: 'translateY(-2px)' };
+    const outlineHover = { borderColor: '#ff2e88', color: '#ff2e88' };
 
-    const cats = ['Sve', 'Web', 'Brending', 'Shop'];
-    const workAll = [
-      { name: 'Kava Nord', cat: 'Web', year: '2026', shot: '[ web shot ]', bg: '#f2d0e2', img: 'assets/work-kavanord.jpg', noImg: false },
-      { name: 'Studio Luma', cat: 'Brending', year: '2026', shot: '[ brand shot ]', bg: '#dfe6d8', img: 'assets/work-studioluma.jpg', pos: 'center 68%' },
-      { name: 'Verde Shop', cat: 'Shop', year: '2025', shot: '[ shop shot ]', bg: '#e6dcc5', img: 'assets/work-verdeshop.jpg', pos: 'top center' },
-      { name: 'Pulse Fit', cat: 'Web', year: '2025', shot: '[ web shot ]', bg: '#d6e2ec', img: 'assets/work-pulsefit.jpg', pos: 'top center' },
+    const shade = 'linear-gradient(180deg,rgba(20,18,16,0) 40%,rgba(20,18,16,0.55) 100%)';
+    const cardCover = (grad, img) => `aspect-ratio:16/10;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:${shade}, ${img ? `url('${img}') top center/cover no-repeat` : grad}`;
+    const modalCover = (grad, img) => `aspect-ratio:16/7;display:flex;align-items:flex-end;padding:clamp(24px,5vw,40px);border-radius:24px 24px 0 0;background:${shade}, ${img ? `url('${img}') top center/cover no-repeat` : grad}`;
+    const rawProjects = [
+      { name: 'FREEDOM TEAM', host: 'freedom.com.hr', cat: 'Poslovna web stranica / Content & Community', url: 'https://freedom.com.hr/', cta: 'Posjeti web', grad: 'linear-gradient(135deg,#0f2233,#204a63)', img: 'assets/work-freedom.png',
+        desc: 'Poslovna web stranica usmjerena na predstavljanje brenda, poslovne ponude, edukativnog sadržaja i izgradnju povjerenja s potencijalnim klijentima.',
+        cilj: 'Predstaviti brend i poslovnu ponudu te izgraditi povjerenje s potencijalnim klijentima kroz jasnu strukturu i edukativni sadržaj.',
+        napravili: ['poslovna prezentacijska web stranica', 'jasna struktura ponude', 'više podstranica', 'blog', 'edukativni sadržaj', 'kontakt i CTA elementi', 'responsive dizajn', 'SEO struktura', 'sadržaj usmjeren prema korisniku'],
+        rezultat: 'Ishod: moderna, responzivna i jasno strukturirana web stranica prilagođena potrebama projekta.' },
+      { name: 'DR+HEMP', host: 'drhemp.hr', cat: 'Webshop / E-commerce', url: 'https://drhemp.hr/', cta: 'Posjeti webshop', grad: 'linear-gradient(135deg,#14401f,#2f7d43)', img: 'assets/work-drhemp.png',
+        desc: 'Online trgovina s kompletnom ecommerce strukturom, kategorijama proizvoda, korisničkim računom, košaricom, blogom i sustavom naručivanja.',
+        cilj: 'Postaviti funkcionalnu online trgovinu s cjelovitim procesom kupnje i jasnim korisničkim iskustvom.',
+        napravili: ['WooCommerce webshop', 'kategorije proizvoda', 'stranice proizvoda', 'košarica', 'korisnički račun', 'naručivanje', 'blog', 'kontakt', 'responsive dizajn', 'ecommerce korisničko iskustvo'],
+        rezultat: 'Ishod: moderna, responzivna i jasno strukturirana web stranica prilagođena potrebama projekta.' },
+      { name: 'TOTAL ADVISEMENT', host: 'total-advisement.hr', cat: 'Poslovna web stranica', url: 'https://total-advisement.hr/', cta: 'Posjeti web', grad: 'linear-gradient(135deg,#10303a,#1f6b73)', img: 'assets/work-total.png',
+        desc: 'Poslovna web stranica marketinške agencije s jasno strukturiranim uslugama, projektima, edukacijama i poslovnim sadržajem.',
+        cilj: 'Jasno strukturirati usluge, projekte i edukacije marketinške agencije uz preglednu navigaciju.',
+        napravili: ['poslovna prezentacijska stranica', 'struktura usluga', 'projekti', 'edukacijske usluge', 'seminari', 'kontakt', 'responsive dizajn', 'jasna navigacija'],
+        rezultat: 'Ishod: moderna, responzivna i jasno strukturirana web stranica prilagođena potrebama projekta.' },
     ];
-    const active = this.state.active;
-    const withMedia = (w) => ({ ...w, noImg: !w.img, media: w.img
-      ? `aspect-ratio:4/3;position:relative;overflow:hidden;background:${w.bg} url('${w.img}') ${w.pos || 'top center'}/cover no-repeat`
-      : `aspect-ratio:4/3;position:relative;overflow:hidden;background:${w.bg}` });
-    const visibleWork = (active === 'Sve' ? workAll : workAll.filter(w => w.cat === active)).map(withMedia);
-    const filters = cats.map(c => ({
-      label: c,
-      onClick: () => this.setState({ active: c }),
-      style: `padding:10px 18px;border-radius:100px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;border:1px solid ${active === c ? '#141210' : 'rgba(20,18,16,0.2)'};background:${active === c ? '#141210' : 'transparent'};color:${active === c ? '#f4f1ea' : '#141210'}`,
-    }));
-    return { ctaHover, cardHover, pinkHover, filters, visibleWork, navStyle, burgerStyle, burgerBar, toggleMenu, closeMenu };
+    const projects = rawProjects.map((p, i) => ({ ...p, cover: cardCover(p.grad, p.img), openCase: () => this.setState({ openProject: i }) }));
+    const op = this.state.openProject;
+    const modalOpen = op != null;
+    const modal = op != null ? { ...rawProjects[op], cover: modalCover(rawProjects[op].grad, rawProjects[op].img) } : { napravili: [] };
+    const closeCase = () => this.setState({ openProject: null });
+    const stop = (e) => e.stopPropagation();
+
+    return { navStyle, burgerStyle, burgerBar, toggleMenu, closeMenu, ctaHover, cardHover, pinkHover, outlineHover, projects, modal, modalOpen, closeCase, stop };
   }
 }
 </script>
